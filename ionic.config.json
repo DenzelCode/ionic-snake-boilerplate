@@ -1,0 +1,7 @@
+{
+  "name": "canvas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
