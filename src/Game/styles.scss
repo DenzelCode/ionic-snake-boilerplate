@@ -5,9 +5,33 @@ body {
 	align-content: center;
 }
 
-canvas {
-	border: 5px solid #f1c40f;
-	width: 500px;
-	height: 500px;
-	align-self: center;
+.game-container {
+	display: flex;
+	flex-direction: column;
+
+	canvas {
+		border: 5px solid #f1c40f;
+		align-self: center;
+	}
+
+	.buttons {
+		height: 100%;
+
+		.rl {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		button {
+			outline: 0;
+			background-color: #3498db;
+			color: #fff;
+			font-size: 30px;
+			font-weight: 600;
+			width: 100%;
+			margin-bottom: 5px;
+			padding: 50px;
+		}
+	}
 }
