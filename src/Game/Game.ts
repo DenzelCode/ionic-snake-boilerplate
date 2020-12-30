@@ -13,6 +13,12 @@ export class Game {
 	private interval: number;
 	private grid = 25;
 	private static instance: Game;
+	private resizeHandler = () => {
+		this.width = window.innerWidth;
+		this.height = window.innerHeight / 2;
+		this.canvas.width = this.width;
+		this.canvas.height = this.height;
+	};
 
 	constructor(private canvas: HTMLCanvasElement) {
 		Game.instance = this;
@@ -23,6 +29,8 @@ export class Game {
 		this.canvas.height = this.height;
 
 		this.scheduleUpdate();
+
+		window.addEventListener('resize', this.resizeHandler);
 	}
 
 	static getInstance(): Game {
@@ -118,5 +126,6 @@ export class Game {
 		this.ctx.fillStyle = '#fff';
 		this.ctx.fillRect(0, 0, this.width, this.height);
 		this.pause = true;
+		window.removeEventListener('resize', this.resizeHandler);
 	}
 }
