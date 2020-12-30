@@ -11,25 +11,25 @@ export class Snake extends Entity {
 		if (Keys.UP.indexOf(e.key) > 0 && this.direction !== Direction.DOWN) {
 			e.preventDefault();
 
-			this.direction = Direction.UP;
+			this.setDirection(Direction.UP);
 		}
 
 		if (Keys.DOWN.indexOf(e.key) > 0 && this.direction !== Direction.UP) {
 			e.preventDefault();
 
-			this.direction = Direction.DOWN;
+			this.setDirection(Direction.DOWN);
 		}
 
 		if (Keys.LEFT.indexOf(e.key) > 0 && this.direction !== Direction.RIGHT) {
 			e.preventDefault();
 
-			this.direction = Direction.LEFT;
+			this.setDirection(Direction.LEFT);
 		}
 
 		if (Keys.RIGHT.indexOf(e.key) > 0 && this.direction !== Direction.LEFT) {
 			e.preventDefault();
 
-			this.direction = Direction.RIGHT;
+			this.setDirection(Direction.RIGHT);
 		}
 	};
 
@@ -180,6 +180,14 @@ export class Snake extends Entity {
 	}
 
 	setDirection(direction: Direction) {
+		if (
+			(this.direction === Direction.LEFT && direction === Direction.RIGHT) ||
+			(this.direction === Direction.RIGHT && direction === Direction.LEFT) ||
+			(this.direction === Direction.UP && direction === Direction.DOWN) ||
+			(this.direction === Direction.DOWN && direction === Direction.UP)
+		)
+			return;
+
 		this.direction = direction;
 	}
 
